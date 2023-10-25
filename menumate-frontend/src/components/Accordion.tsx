@@ -39,8 +39,9 @@ const Accordion: React.FC<AccordionProps> = ({ title, items }) => {
                     color={item.isVeg ? "green" : "red"}
                     className="mt-1 mr-1 border border-black p-[1px]"
                   />
-                  {item.name} -
-                  <div className="font-medium">Rs. {item.price}</div>
+                  {item.name}
+                  {" -"}
+                  <div className="font-medium ml-1"> Rs. {item.price}</div>
                 </p>
                 <p className="text-xs text-gray-600">{item.description}</p>
               </div>
