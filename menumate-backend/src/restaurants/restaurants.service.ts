@@ -1,7 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { RestaurantSchema } from './restaurants.schema';
 import { CreateRestaurantDto } from './restaurants.dto';
 
 @Injectable()
@@ -30,6 +28,14 @@ export class RestaurantsService {
   }
 
   async update(id: string, payload: any) {
-    const restaurant = await this.restaurantModel.findById(id);
+    try {
+      const updatedRestaurant = await this.restaurantModel
+        .findByIdAndUpdate(id, payload, { new: true })
+        .exec();
+
+      return updatedRestaurant;
+    } catch (error) {
+      throw new NotFoundException(`Restaurant with ID ${id} not found`);
+    }
   }
 }

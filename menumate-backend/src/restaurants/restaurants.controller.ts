@@ -1,14 +1,6 @@
-import {
-  Body,
-  Controller,
-  Get,
-  NotFoundException,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { RestaurantsService } from './restaurants.service';
-import { CreateRestaurantDto } from './restaurants.dto';
+import { CreateRestaurantDto, UpdateRestaurantDto } from './restaurants.dto';
 
 @Controller('restaurants')
 export class RestaurantsController {
@@ -31,7 +23,7 @@ export class RestaurantsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, payload: any) {
+  update(@Param('id') id: string, @Body() payload: UpdateRestaurantDto) {
     const updatedRestaurant = this.restaurantsService.update(id, payload);
     return updatedRestaurant;
   }
