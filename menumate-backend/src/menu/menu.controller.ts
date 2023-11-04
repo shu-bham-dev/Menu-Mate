@@ -13,18 +13,18 @@ export class MenuController {
 
   @Get()
   findAll() {
-    // return this.restaurantsService.findAll();
+    return this.menuService.findAll();
   }
 
   @Get(':id')
   findById(@Param('id') id: string) {
-    // const restaurant = this.restaurantsService.findById(id);
-    // return restaurant;
+    const restaurant = this.menuService.findById(id);
+    return restaurant;
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() payload: any) {
-    // const updatedRestaurant = this.restaurantsService.update(id, payload);
-    // return updatedRestaurant;
+  @Get('restaurant/:id')
+  findByResturantId(@Param('id') id: string) {
+    const restaurant = this.menuService.findByResturantId(id);
+    return restaurant;
   }
 }

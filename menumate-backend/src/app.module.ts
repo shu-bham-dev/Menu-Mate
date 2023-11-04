@@ -8,6 +8,8 @@ import { RestaurantSchema } from './restaurants/restaurants.schema';
 import { MenuController } from './menu/menu.controller';
 import { MenuService } from './menu/menu.service';
 import { MenuSchema } from './menu/menu.schema';
+import { UserController } from './user/user.controller';
+import { UserService } from './user/user.service';
 
 @Module({
   imports: [
@@ -19,7 +21,7 @@ import { MenuSchema } from './menu/menu.schema';
       { name: 'Menu', schema: MenuSchema },
     ]),
   ],
-  controllers: [AppController, RestaurantsController, MenuController],
-  providers: [AppService, RestaurantsService, MenuService],
+  controllers: [AppController, RestaurantsController, MenuController, UserController],
+  providers: [AppService, RestaurantsService, MenuService, UserService],
 })
 export class AppModule {}
