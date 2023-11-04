@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import { MenuListDto } from './dto/menu.dto';
 
 export const MenuListSchema = new mongoose.Schema({
   category: String,
@@ -12,8 +11,8 @@ export const MenuListSchema = new mongoose.Schema({
 
 export const MenuSchema = new mongoose.Schema(
   {
-    menuList: [MenuListSchema],
-    restaurantId: String,
+    menuList: { type: [MenuListSchema], required: true },
+    restaurantId: { type: String, required: true },
   },
   { timestamps: true },
 );

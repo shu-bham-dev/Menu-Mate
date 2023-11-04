@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { RestaurantSchema } from './restaurants/restaurants.schema';
 import { MenuController } from './menu/menu.controller';
 import { MenuService } from './menu/menu.service';
+import { MenuSchema } from './menu/menu.schema';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { MenuService } from './menu/menu.service';
     ),
     MongooseModule.forFeature([
       { name: 'Restaurant', schema: RestaurantSchema },
+      { name: 'Menu', schema: MenuSchema },
     ]),
   ],
   controllers: [AppController, RestaurantsController, MenuController],
