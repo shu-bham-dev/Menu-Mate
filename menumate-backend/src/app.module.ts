@@ -10,6 +10,7 @@ import { MenuService } from './menu/menu.service';
 import { MenuSchema } from './menu/menu.schema';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
+import { UserSchema } from './user/user.schema';
 
 @Module({
   imports: [
@@ -19,9 +20,15 @@ import { UserService } from './user/user.service';
     MongooseModule.forFeature([
       { name: 'Restaurant', schema: RestaurantSchema },
       { name: 'Menu', schema: MenuSchema },
+      { name: 'User', schema: UserSchema },
     ]),
   ],
-  controllers: [AppController, RestaurantsController, MenuController, UserController],
+  controllers: [
+    AppController,
+    RestaurantsController,
+    MenuController,
+    UserController,
+  ],
   providers: [AppService, RestaurantsService, MenuService, UserService],
 })
 export class AppModule {}

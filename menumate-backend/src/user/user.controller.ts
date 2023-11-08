@@ -6,12 +6,13 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
   @Get()
   findAll() {
-    return {};
+    return this.userService.findAll();
   }
 
   @Post()
   createUser(@Body() user) {
-    return {};
+    console.log(user, '<<<<<');
+    return this.userService.create(user);
   }
 
   @Get(':id')
