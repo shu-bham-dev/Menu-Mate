@@ -1,5 +1,5 @@
 import { RestaurantSchema } from 'src/restaurants/restaurants.schema';
-import * as Mongoose from 'mongoose';
+import mongoose, * as Mongoose from 'mongoose';
 
 export const UserSchema = new Mongoose.Schema(
   {
@@ -9,10 +9,7 @@ export const UserSchema = new Mongoose.Schema(
     password: String,
     email: String,
     role: String,
-    retaurantID: {
-      type: RestaurantSchema,
-      required: true,
-    },
+    restaurantId: { type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant' },
   },
   { timestamps: true },
 );
