@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateUserDto } from './dto/user.dto';
-import { NotFoundException } from '@nestjs/common';
+import {
+  NotFoundException,
+  BadRequestException,
+  ForbiddenException,
+} from '@nestjs/common';
 
 @Injectable()
 export class UserService {
@@ -14,16 +18,14 @@ export class UserService {
 
   async create(userData: CreateUserDto) {
     try {
-      console.log('Inside service try');
       const user = await new this.userModel(userData);
       if (!user) {
-        throw new Error('Unable to create new user');
+        throw new BadRequestException('Unable to create new user');
       }
       user.save();
       return user;
     } catch (error) {
-      console.log('Inside service err');
-      return error.message;
+      throw new ForbiddenException('Unable to create new user');
     }
   }
 
